@@ -10,7 +10,13 @@ class BlacklistWhitelist
 {
     public static function subject(string $subject, BlockType $type): Model
     {
-        return Model::firstOrCreate([
+        $subject = Model::where('subject', $subject)->first();
+
+        if ($subject) {
+            return $subject;
+        }
+
+        return Model::create([
             'subject' => $subject,
             'type' => $type,
         ]);
