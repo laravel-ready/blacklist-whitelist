@@ -48,6 +48,7 @@ BlacklistWhitelist::subject('email@example.com', BlockType::Blacklist);
 
 // any subject
 BlacklistWhitelist::subject('TEST', BlockType::Blacklist);
+```
 
 
 ## ⚓Credits
