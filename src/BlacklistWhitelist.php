@@ -16,17 +16,25 @@ class BlacklistWhitelist
         ]);
     }
 
-    public static function isBlocked(string $subject): bool
+    public static function isBlocked(string $subject): bool|null
     {
-        return Model::where('subject', $subject)
-            ->where('type', BlockType::Blacklist)
-            ->exists();
+        $subject = Model::where('subject', $subject)->first();
+
+        if ($subject) {
+            return $subject->type->equals(BlockType::Blacklist);
+        }
+
+        return null;
     }
 
-    public static function isAllowed(string $subject): bool
+    public static function isAllowed(string $subject): bool|null
     {
-        return Model::where('subject', $subject)
-            ->where('type', BlockType::Whitelist)
-            ->exists();
+        $subject = Model::where('subject', $subject)->first();
+
+        if ($subject) {
+            return $subject->type->equals(BlockType::Whitelist);
+        }
+
+        return null;
     }
 }
