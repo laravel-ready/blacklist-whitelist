@@ -48,6 +48,12 @@ BlacklistWhitelist::subject('email@example.com', BlockType::Blacklist);
 
 // any subject
 BlacklistWhitelist::subject('TEST', BlockType::Blacklist);
+
+// check subject
+BlacklistWhitelist::isBlocked('example.com');
+
+// check allowed subject
+BlacklistWhitelist::isAllowed('example.com');
 ```
 
 
