@@ -2,7 +2,9 @@
 
 return [
     /**
-     * Add any config description here.
+     * Table name for the blacklist and whitelist.
+     * 
+     * Default: 'blacklist_whitelist'
      */
-    'any_config' => true
+    'table_name' => 'blacklist_whitelist',
 ];
