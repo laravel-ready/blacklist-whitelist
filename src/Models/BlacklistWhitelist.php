@@ -5,6 +5,7 @@ namespace LaravelReady\BlacklistWhitelist\Models;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use LaravelReady\BlacklistWhitelist\Enums\BlockType;
 
 class BlacklistWhitelist extends Model
@@ -35,4 +36,9 @@ class BlacklistWhitelist extends Model
     protected $casts = [
         'type' => BlockType::class,
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Config::get('blacklist-whitelist.user_model', 'App\Models\User'));
+    }
 }
